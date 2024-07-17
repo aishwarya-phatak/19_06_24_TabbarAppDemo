@@ -189,17 +189,36 @@
                     <view key="view" contentMode="scaleToFill" id="9JW-Ug-I6c">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz3-sK-k9a">
+                                <rect key="frame" x="20" y="99" width="353" height="630"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Abq-2k-Dhe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Abq-2k-Dhe" firstAttribute="trailing" secondItem="hz3-sK-k9a" secondAttribute="trailing" constant="20" id="ELu-mB-oNs"/>
+                            <constraint firstItem="hz3-sK-k9a" firstAttribute="top" secondItem="Abq-2k-Dhe" secondAttribute="top" constant="40" id="U2E-v4-bKM"/>
+                            <constraint firstItem="hz3-sK-k9a" firstAttribute="leading" secondItem="Abq-2k-Dhe" secondAttribute="leading" constant="20" id="eDz-EC-glD"/>
+                            <constraint firstItem="Abq-2k-Dhe" firstAttribute="bottom" secondItem="hz3-sK-k9a" secondAttribute="bottom" constant="40" id="fKt-tt-BZW"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Enquiry" id="g1N-1X-8bF">
                         <imageReference key="image" image="phone" catalog="system" symbolScale="large"/>
                         <imageReference key="selectedImage" image="phone.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="webView" destination="hz3-sK-k9a" id="Axj-DK-ofH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gwz-TQ-nSp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="961" y="627"/>
+            <point key="canvasLocation" x="959.5419847328244" y="626.76056338028172"/>
         </scene>
         <!--Info-->
         <scene sceneID="R1z-H2-VNC">
@@ -232,7 +251,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Android"/>
                                         <connections>
-                                            <action selector="btnNavigateToAndroidInfoViewController:" destination="MiV-UT-gei" eventType="touchUpInside" id="Le2-4f-m1p"/>
+                                            <action selector="btnNavigateBetweenViewControllers:" destination="MiV-UT-gei" eventType="touchUpInside" id="6gR-gg-9YA"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8Q-Nh-q4f">
@@ -244,7 +263,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="iOS"/>
                                         <connections>
-                                            <action selector="btnNavigateToiOSInfoViewController:" destination="MiV-UT-gei" eventType="touchUpInside" id="juZ-v9-A1r"/>
+                                            <action selector="btnNavigateBetweenViewControllers:" destination="MiV-UT-gei" eventType="touchUpInside" id="eEI-Al-9Gw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vAr-DS-pYd">
@@ -253,7 +272,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="C/Cpp"/>
                                         <connections>
-                                            <action selector="btnNavigateToCCppInfoViewContorller:" destination="MiV-UT-gei" eventType="touchUpInside" id="xFz-eM-sBM"/>
+                                            <action selector="btnNavigateBetweenViewControllers:" destination="MiV-UT-gei" eventType="touchUpInside" id="uUl-kG-ab5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -268,15 +287,6 @@
                                     <segue destination="8jE-y2-nxs" kind="embed" id="8Br-4N-F9a"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gjk-g9-ZjC">
-                                <rect key="frame" x="20" y="309" width="353" height="400"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="USr-ry-X2y"/>
-                                </constraints>
-                                <connections>
-                                    <segue destination="1G0-VE-WiN" kind="embed" id="wB0-24-0ci"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Udl-Qr-FQu">
                                 <rect key="frame" x="20" y="309" width="353" height="400"/>
                                 <constraints>
@@ -284,6 +294,15 @@
                                 </constraints>
                                 <connections>
                                     <segue destination="cfc-lw-7YZ" kind="embed" id="zi6-TB-iCD"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gjk-g9-ZjC">
+                                <rect key="frame" x="20" y="309" width="353" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="USr-ry-X2y"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="1G0-VE-WiN" kind="embed" id="wB0-24-0ci"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -312,6 +331,9 @@
                         <imageReference key="selectedImage" image="info.square.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="androidContainerView" destination="7E7-1e-R3I" id="y2t-WN-u1w"/>
+                        <outlet property="ccppContainerView" destination="Udl-Qr-FQu" id="z1y-hb-uD1"/>
+                        <outlet property="iOSContainerView" destination="Gjk-g9-ZjC" id="nwU-K7-cDH"/>
                         <outlet property="infoLabel" destination="h3b-eh-52a" id="87D-97-eaJ"/>
                     </connections>
                 </viewController>
@@ -345,12 +367,32 @@
                     <view key="view" contentMode="scaleToFill" id="aLV-wf-5OM">
                         <rect key="frame" x="0.0" y="0.0" width="353" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="LlS-Po-cBw">
+                                <rect key="frame" x="20" y="79" width="313" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="vXf-lc-dpG"/>
+                                </constraints>
+                                <string key="text">Become a professional Android App Developer. This course will help you develop Android Programming skills, and start career in Android.
+As part of the course, you will learn Android architecture, user interfaces, activities, controls, layouts, services, content providers, multimedia APIs, maps, web serices and lot more. You’ll gain practical development experience by working on live project during the Android app development course. Learn Android today, and secure a great job and fast moving career!</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Iuh-qW-St7"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="LlS-Po-cBw" firstAttribute="top" secondItem="Iuh-qW-St7" secondAttribute="top" constant="20" id="0ad-8d-af2"/>
+                            <constraint firstItem="LlS-Po-cBw" firstAttribute="leading" secondItem="Iuh-qW-St7" secondAttribute="leading" constant="20" id="lql-8v-TGo"/>
+                            <constraint firstItem="Iuh-qW-St7" firstAttribute="trailing" secondItem="LlS-Po-cBw" secondAttribute="trailing" constant="20" id="u2W-cs-qiL"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rit-Pk-cjy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-489" y="1207"/>
+            <point key="canvasLocation" x="-482" y="1206"/>
         </scene>
         <!--iOS Info View Controller-->
         <scene sceneID="kar-5O-8Ft">
@@ -359,12 +401,32 @@
                     <view key="view" alpha="0.40000000000000002" contentMode="scaleToFill" id="pfJ-OX-rQv">
                         <rect key="frame" x="0.0" y="0.0" width="353" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="frP-7W-pGO">
+                                <rect key="frame" x="20" y="79" width="313" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="qRA-td-AAH"/>
+                                </constraints>
+                                <string key="text">Learn iOS app development and start a great career in Mobile App Development.
+This iOS course will cover the iOS 10 platform using swift 3 programming language, including user interfaces, input restrictions, notifications, messaging, web services and core data. You will also be getting chance to work on live project and experience the complete iOS app development process till the deployment on Apple App Store.</string>
+                                <color key="textColor" systemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="e9Z-aX-uIq"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <constraints>
+                            <constraint firstItem="frP-7W-pGO" firstAttribute="leading" secondItem="e9Z-aX-uIq" secondAttribute="leading" constant="20" id="88x-a1-7Lc"/>
+                            <constraint firstItem="frP-7W-pGO" firstAttribute="top" secondItem="e9Z-aX-uIq" secondAttribute="top" constant="20" id="KgU-t5-tGq"/>
+                            <constraint firstItem="e9Z-aX-uIq" firstAttribute="trailing" secondItem="frP-7W-pGO" secondAttribute="trailing" constant="20" id="uig-bC-euc"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CMc-k6-o8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="149" y="1310"/>
+            <point key="canvasLocation" x="181" y="1206"/>
         </scene>
         <!--Cpp Info View Controller-->
         <scene sceneID="RWp-SJ-tND">
@@ -373,12 +435,32 @@
                     <view key="view" alpha="0.5" contentMode="scaleToFill" id="gpv-mw-2K2">
                         <rect key="frame" x="0.0" y="0.0" width="353" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ckX-8b-eMZ">
+                                <rect key="frame" x="20" y="79" width="313" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="PE5-8K-aCB"/>
+                                </constraints>
+                                <string key="text">C Programming is the right course to start with if you are new to programming. This course will create a strong base to jump to Object Oriented technologies.
+Through this course, you will be learning Algorithms and it's implementation, you will also learn topics like Arrays, Structures, Pointers and many more in depth. You will writing a lot of assignments to build concrete programming skills.</string>
+                                <color key="textColor" systemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="C9A-Hk-P1j"/>
                         <color key="backgroundColor" red="0.89054528060000004" green="0.68168048469999998" blue="0.91887223640000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ckX-8b-eMZ" firstAttribute="leading" secondItem="C9A-Hk-P1j" secondAttribute="leading" constant="20" id="FqP-VB-2Oa"/>
+                            <constraint firstItem="C9A-Hk-P1j" firstAttribute="trailing" secondItem="ckX-8b-eMZ" secondAttribute="trailing" constant="20" id="OPZ-E8-PNg"/>
+                            <constraint firstItem="ckX-8b-eMZ" firstAttribute="top" secondItem="C9A-Hk-P1j" secondAttribute="top" constant="20" id="fCh-di-wFx"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="keh-Gg-b1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="866" y="1207"/>
+            <point key="canvasLocation" x="845" y="1206"/>
         </scene>
     </scenes>
     <resources>
@@ -389,14 +471,20 @@
         <image name="phone" catalog="system" width="128" height="115"/>
         <image name="phone.fill" catalog="system" width="128" height="114"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
